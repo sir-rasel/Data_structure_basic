@@ -21,5 +21,5 @@ void prime_factorized(int n){
             }
         }
     }
-    if(n!=i) printf("%d",n);
+    if(n!=1) printf("%d",n);
 }
