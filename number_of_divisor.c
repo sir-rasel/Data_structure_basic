@@ -13,25 +13,22 @@ int main(){
 }
 
 int nod(int n){
-    int i,j,k,count=0,nod=1;
+    int i,j,k,count,nod=1;
     k=sqrt(n+1);
     int a[k];
     for(i=0;i<k;i++) a[i]=0;
     for(i=2;i<=sqrt(n+1);i++){
         if(n%i==0){
+            count=0;
             while(n%i==0){
-                a[count]++;
+                count++;
                 n/=i;
             }
-            count++;
+            nod*=(count+1);
         }
     }
     if(n!=1){
-        a[count]++;
-        count++;
-    }
-    for(i=0;i<count;i++){
-        nod*=(a[i]+1);
+        nod*=2;
     }
     return nod;
 }
