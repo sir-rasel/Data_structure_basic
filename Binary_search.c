@@ -11,7 +11,7 @@ int main(){
     scanf("%d",&item);
     low=0;
     hi=n-1;
-    while(low<hi){
+    while(low<=hi){
         mid=low+(hi-low)/2;
         if(arr[mid]==item){
             flag++;
