@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define mx 100000000
+#define mx 18446744073709551615
 using namespace std;
 
 //#define MAX 100000000
