@@ -2,7 +2,7 @@
 
 int bigmod(int a,int b,int m);
 
-int main(){\
+int main(){
     int a,b,m,x;
     printf("Input value a,b, and m : ");
     scanf("%d %d %d",&a,&b,&m);
