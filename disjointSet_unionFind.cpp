@@ -18,7 +18,7 @@ void unionTwoSet(int parent[],int i,int j){
     int u = findRepresentative(parent,i);
     int v = findRepresentative(parent,j);
     if(u==v) printf("Already friends\n");
-    else parent[v]=u;
+    else parent[u]=v;
 }
 
 int main(){
