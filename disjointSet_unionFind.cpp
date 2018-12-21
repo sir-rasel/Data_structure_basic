@@ -1,8 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void makeSet(int parent[],int n){
-    for(int i=0;i<n;i++) parent[i]=i;
+void makeSet(int parent[],int rankOfParent[],int n){
+    for(int i=0;i<n;i++) parent[i]=i,rankOfParent[i]=1;
 }
 
 int findRepresentative(int parent[],int i){
@@ -14,11 +14,15 @@ int findRepresentative(int parent[],int i){
     }
 }
 
-void unionTwoSet(int parent[],int i,int j){
+void unionTwoSet(int parent[],int rankOfParent[],int i,int j){
     int u = findRepresentative(parent,i);
     int v = findRepresentative(parent,j);
     if(u==v) printf("Already friends\n");
-    else parent[u]=v;
+    else {
+        if(rankOfParent[u]<rankOfParent[v])
+            parent[u]=v,rankOfParent[v]+=rankOfParent[u];
+        else parent[v]=u,rankOfParent[u]+=rankOfParent[v];
+    }
 }
 
 int main(){
@@ -26,8 +30,9 @@ int main(){
     printf("Give the number of element: ");
     scanf("%d",&n);
     int parent[n+5];
+    int rankOfParent[n+5];
 
-    makeSet(parent,n);
+    makeSet(parent,rankOfParent,n);
 
     printf("Give the number of union combination: ");
     int m;
@@ -36,7 +41,7 @@ int main(){
         printf("Give the combination of a union operation between %d to %d: ",0,n);
         int a,b;
         scanf("%d %d",&a,&b);
-        unionTwoSet(parent,a,b);
+        unionTwoSet(parent,rankOfParent,a,b);
     }
 
     printf("Give the number of find combination: ");
